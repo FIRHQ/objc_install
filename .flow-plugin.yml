@@ -1,0 +1,16 @@
+
+name: objc_install
+version: 0.0.1
+language: objc
+description: Install dependencies use `pod install`
+public: true
+tags:
+  - objc
+  - install
+inputs:
+outputs:
+script_path: ./run.sh  
+  
+template: |  
+  
+  

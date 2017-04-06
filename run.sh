@@ -13,7 +13,7 @@ if [ -f Podfile ];then
     export http_proxy=http://172.16.152.110:8123
     export https_proxy=$http_proxy
     
-    remove_lockfile
+#    remove_lockfile
     flow_cmd "pod install --no-repo-update"
     
     unset http_proxy

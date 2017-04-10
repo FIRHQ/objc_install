@@ -10,14 +10,11 @@ remove_lockfile() {
 if [ -f Podfile ];then
     cp Podfile Podfile.bak
     sed -i -e 's/^[[:space:]]*source/#source/g' Podfile
-    export http_proxy=http://172.16.152.110:8123
-    export https_proxy=$http_proxy
-    
+    source /usr/local/bin/proxy.sh
+    # export https_proxy=$http_proxy
 #    remove_lockfile
-    flow_cmd "pod install --no-repo-update"
-    
-    unset http_proxy
-    unset https_proxy
+    flow_cmd "pod install --no-repo-update"    
+    source /usr/local/bin/unproxy.sh
 fi
 tar -zcf Pods.tar.gz Pods
 

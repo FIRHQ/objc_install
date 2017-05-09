@@ -7,13 +7,19 @@ remove_lockfile() {
   fi
 }
 
+if [[ $NETWORK_PROXY == 'TRUE' ]]; then 
+    source /usr/local/bin/proxy.sh
+fi
+
 if [ -f Podfile ];then
     cp Podfile Podfile.bak
     sed -i -e 's/^[[:space:]]*source/#source/g' Podfile
-    source /usr/local/bin/proxy.sh
     # export https_proxy=$http_proxy
     # remove_lockfile
     flow_cmd "pod install --no-repo-update"    
+fi
+
+if [[ $NETWORK_PROXY == 'TRUE' ]]; then 
     source /usr/local/bin/unproxy.sh
 fi
 

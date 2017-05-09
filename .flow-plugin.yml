@@ -13,7 +13,7 @@ inputs:
     desc_cn: "使用代理网络安装依赖"
     desc_en: "Install pod deps by proxy"
     category: "switcher"
-    default: 'FALSE'
+    default: 'TRUE'
 outputs:
 script_path: ./run.sh  
   
